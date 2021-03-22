@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Suggestions/>
+    <Suggestions streamer="nicroz38"/>
   </div>
 </template>
 
@@ -10,13 +10,14 @@ import Suggestions from './components/Suggestions.vue';
 import firebase from "firebase";
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import BootstrapVue, {IconsPlugin} from "bootstrap-vue";
+import BootstrapVue, {IconsPlugin, LayoutPlugin} from "bootstrap-vue";
 import './app.scss'
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
+Vue.use(LayoutPlugin)
 
 @Component({
   components: {
@@ -49,5 +50,7 @@ export default class App extends Vue {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 </style>

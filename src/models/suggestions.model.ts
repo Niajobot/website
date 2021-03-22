@@ -4,6 +4,7 @@ export class SuggestionModel {
         Object.assign(this, sug)
     }
 
+    public id: string;
     public game: string;
     public author: string;
 }
