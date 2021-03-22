@@ -1,13 +1,8 @@
 <template>
   <div>
     <ul>
-      <li v-for="(suggestion, name, index) in suggestions" :key="index">
-        {{name}} :
-        <ul>
-          <li v-for="(game, index) in suggestion" :key="index">
-            {{ game.game }}
-          </li>
-        </ul>
+      <li v-for="(suggestion, index) in suggestions" :key="index">
+        {{ suggestion.game }} {{ suggestion.author }}
       </li>
     </ul>
   </div>
@@ -16,21 +11,24 @@
 <script lang="ts">
 import {Component, Prop, Vue} from 'vue-property-decorator';
 import firebase from 'firebase';
+import {SuggestionModel} from "@/models/suggestions.model";
+import validate = WebAssembly.validate;
 
 @Component
 export default class Suggestions extends Vue {
 
-  public suggestions: any = [];
+  public suggestions: Array<SuggestionModel> = [];
 
   public mounted(): void {
     firebase.database().ref('/').child('nicroz38')
         .child("suggestions")
         .on("value", snapshot => {
-          this.suggestions = snapshot.val()
+          this.suggestions = (Object.values(snapshot.val()) as Partial<SuggestionModel>[])
+            .map((val : Partial<SuggestionModel>) => {
+              return new SuggestionModel(val);
+            });
         });
   }
-
-  @Prop() private msg!: string;
 }
 </script>
 

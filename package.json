@@ -9,6 +9,8 @@
     "deploy": "firebase deploy"
   },
   "dependencies": {
+    "bootstrap": "^5.0.0-beta2",
+    "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
     "firebase": "^8.3.1",
     "vue": "^2.6.11",
