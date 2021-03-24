@@ -26,7 +26,7 @@ Vue.use(LayoutPlugin)
 })
 export default class App extends Vue {
 
-  created() {
+  async created() {
     const firebaseConfig = {
       apiKey: "AIzaSyChh1BEx0mB2747hP8jW9QA8ebwIgJmodQ",
       authDomain: "stream-2549c.firebaseapp.com",
@@ -38,6 +38,8 @@ export default class App extends Vue {
     }
 
     firebase.initializeApp(firebaseConfig)
+
+    await firebase.auth().signInAnonymously();
   }
 }
 </script>
