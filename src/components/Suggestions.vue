@@ -6,7 +6,7 @@
       </template>
     </b-table>
 
-    <div>
+    <div v-if="userEmail == null">
       <b-button v-b-toggle.collapse-login variant="secondary">Show login</b-button>
       <b-collapse id="collapse-login">
         <Login/>
