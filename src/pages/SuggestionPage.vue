@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-table hover bordered :items="suggestions" :fields="fields">
+    <b-table hover striped :items="suggestions" :fields="fields">
       <template #cell(actions)="data">
         <b-button v-if="userEmail != null" v-on:click="deleteSuggestion(data.item)" variant="outline-danger">Suppression</b-button>
       </template>
@@ -64,8 +64,12 @@ export default class SuggestionPage extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import '../styles/theme.scss';
 
 #collapse-login {
   margin-top: 25px;
+}
+.table {
+  @extend %shadow-3-dp;
 }
 </style>
