@@ -24,7 +24,7 @@ import Login from "@/components/Login.vue";
 @Component({
   components: {Login}
 })
-export default class Suggestions extends Vue {
+export default class SuggestionPage extends Vue {
 
   @Prop()
   private streamer: string;

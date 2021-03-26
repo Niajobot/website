@@ -1,0 +1,11 @@
+// Define variable defaults
+// $body-bg: #000;
+// $body-color: #111;
+$theme-colors: (
+  "primary": #1E1513,
+  "danger": #ff4136,
+  "secondary": #B79765,
+);
+
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap-vue/src/index.scss';
