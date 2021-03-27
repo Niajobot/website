@@ -1,17 +1,10 @@
 <template>
   <div>
-    <b-table hover bordered :items="suggestions" :fields="fields">
+    <b-table hover striped :items="suggestions" :fields="fields">
       <template #cell(actions)="data">
         <b-button v-if="userEmail != null" v-on:click="deleteSuggestion(data.item)" variant="outline-danger">Suppression</b-button>
       </template>
     </b-table>
-
-    <div v-if="userEmail == null">
-      <b-button v-b-toggle.collapse-login variant="secondary">Show login</b-button>
-      <b-collapse id="collapse-login">
-        <Login/>
-      </b-collapse>
-    </div>
 
   </div>
 </template>
@@ -20,11 +13,9 @@
 import {Component, Prop, Vue} from 'vue-property-decorator';
 import firebase from 'firebase';
 import {SuggestionModel} from "@/models/suggestions.model";
-import Login from "@/components/Login.vue";
 @Component({
-  components: {Login}
 })
-export default class Suggestions extends Vue {
+export default class SuggestionPage extends Vue {
 
   @Prop()
   private streamer: string;
@@ -64,8 +55,12 @@ export default class Suggestions extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import '../styles/theme.scss';
 
 #collapse-login {
   margin-top: 25px;
+}
+.table {
+  @extend %shadow-3-dp;
 }
 </style>
