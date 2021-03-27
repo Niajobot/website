@@ -6,13 +6,6 @@
       </template>
     </b-table>
 
-    <div v-if="userEmail == null">
-      <b-button v-b-toggle.collapse-login variant="secondary">Show login</b-button>
-      <b-collapse id="collapse-login">
-        <Login/>
-      </b-collapse>
-    </div>
-
   </div>
 </template>
 
@@ -20,9 +13,7 @@
 import {Component, Prop, Vue} from 'vue-property-decorator';
 import firebase from 'firebase';
 import {SuggestionModel} from "@/models/suggestions.model";
-import Login from "@/components/Login.vue";
 @Component({
-  components: {Login}
 })
 export default class SuggestionPage extends Vue {
 

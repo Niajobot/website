@@ -1,42 +1,63 @@
 <template>
-  <b-card class=".align-middle">
-    <div class="form">
-      <input v-model="email" type="email" placeholder="email"/>
-      <input v-model="password" type="password" placeholder="password"/>
+  <b-modal id="modal-login" hide-footer>
+    <template #modal-title> Connexion </template>
+    <div class=".align-middle">
+      <div class="form">
+        <b-row>
+          <b-col sm="12" class="mb-2"
+            ><b-form-input v-model="email" type="email" placeholder="email" />
+          </b-col>
+          <b-col sm="12">
+            <b-form-input
+              v-model="password"
+              type="password"
+              placeholder="password"
+            />
+          </b-col>
+        </b-row>
+      </div>
     </div>
-    <b-button v-on:click="logToFirebase()" variant="outline-primary">Login</b-button>
-  </b-card>
+    <div class="d-flex justify-content-end">
+      <b-button
+        class="mr-2"
+        variant="outline-danger"
+        @click="$bvModal.hide('modal-login')"
+        >Cancel</b-button
+      >
+      <b-button v-on:click="logToFirebase()" variant="secondary"
+        >Login</b-button
+      >
+    </div>
+  </b-modal>
 </template>
 
 <script lang="ts">
-import {Component, Vue} from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import firebase from "firebase";
 
 @Component
 export default class Login extends Vue {
-
-  private email = '';
-  private password = '';
+  private email = "";
+  private password = "";
 
   public async logToFirebase() {
-    await firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+    await firebase.auth().signInWithEmailAndPassword(this.email, this.password);
+
+    this.$bvModal.hide('modal-login');
   }
 }
 </script>
 
 <style scoped lang="scss">
-
 .card {
   vertical-align: center;
 }
 
 input {
-  max-width: 25%;
   margin-right: 10px;
 }
 
 .form {
   margin-bottom: 10px;
 }
-
 </style>

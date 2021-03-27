@@ -7,7 +7,15 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav> </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
-          <b-button variant="outline-secondary">Log In</b-button>
+          <div v-if="userEmail == null" class="d-flex">
+            <div>
+              <b-button v-b-modal.modal-login variant="outline-secondary">
+                Log In
+              </b-button>
+
+              <Login />
+            </div>
+          </div>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -15,12 +23,28 @@
 </template>
 
 <script lang="ts">
+//VUE
 import { Component, Prop, Vue } from "vue-property-decorator";
 
-@Component({})
+//external
+import firebase from "firebase";
+
+//internal
+import Login from "@/components/Login.vue";
+@Component({
+  components: { Login },
+})
 export default class Header extends Vue {
   @Prop()
-  private streamer: string;
+  public streamer: string;
+
+  public userEmail: string | null = null;
+
+  public mounted() {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.userEmail = user != null ? user.email : null;
+    });
+  }
 }
 </script>
 
