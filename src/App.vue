@@ -2,21 +2,19 @@
   <div id="app">
     <Header streamer="nicroz38"></Header>
     <main>
-      <SuggestionPage streamer="nicroz38" />
+      <router-view/>
     </main>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import SuggestionPage from "./pages/SuggestionPage.vue";
+import SuggestionPage from "./views/SuggestionPage.vue";
 import Header from "./common/Header.vue";
 import firebase from "firebase";
 import BootstrapVue, { IconsPlugin, LayoutPlugin } from "bootstrap-vue";
-// import "bootstrap/dist/css/bootstrap.css";
-// import "bootstrap-vue/dist/bootstrap-vue.css";
-
 import "./styles/theme.scss";
+import HomePage from "@/views/Home.vue";
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue);
@@ -28,6 +26,7 @@ Vue.use(LayoutPlugin);
   components: {
     SuggestionPage,
     Header,
+    HomePage
   },
 })
 export default class App extends Vue {
@@ -54,11 +53,7 @@ export default class App extends Vue {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // text-align: center;
   color: #2c3e50;
-  // margin-top: 60px;
-  // padding-left: 100px;
-  // padding-right: 100px;
   main {
     margin: 15px 30px;
   }

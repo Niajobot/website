@@ -1,7 +1,8 @@
 <template>
   <header>
     <b-navbar toggleable="lg" type="dark" variant="primary">
-      <b-navbar-brand href="#" v-if="streamer">{{ streamer }}</b-navbar-brand>
+<!--      <b-navbar-brand href="#" v-if="streamer">{{ streamer }}</b-navbar-brand>-->
+      <b-navbar-brand href="/">Home</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
@@ -24,7 +25,7 @@
 
 <script lang="ts">
 //VUE
-import { Component, Prop, Vue } from "vue-property-decorator";
+import {Component, Vue} from "vue-property-decorator";
 
 //external
 import firebase from "firebase";
@@ -35,8 +36,6 @@ import Login from "@/components/Login.vue";
   components: { Login },
 })
 export default class Header extends Vue {
-  @Prop()
-  public streamer: string;
 
   public userEmail: string | null = null;
 
