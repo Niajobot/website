@@ -1,5 +1,7 @@
 <template>
   <div>
+    <h1>{{ $t('home.welcome_title') }}</h1>
+    <p v-html="$t('home.welcome_text')"></p>
     {{ $t('home.list_streamers') }}
     <ul>
       <li v-for="(streamer, index) in streamers" :key="index">

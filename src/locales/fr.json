@@ -1,9 +1,13 @@
 {
   "header": {
     "login": "Se connecter",
-    "home": "Accueil"
+    "logout": "Se déconnecter",
+    "home": "Accueil",
+    "brand": "Niajobot"
   },
   "home": {
+    "welcome_title": "Bienvenue sur Niajobot",
+    "welcome_text": "Vous retrouverez ici la liste des streamers qui l'utilise et dans leur espace les suggestions déjà proposé par vous ! <br/>Plein d'autres bonnes choses à venir, soyez patients.",
     "list_streamers": "Liste des streamers :"
   },
   "login": {
