@@ -1,0 +1,29 @@
+{
+  "header": {
+    "login": "Se connecter",
+    "home": "Accueil"
+  },
+  "home": {
+    "list_streamers": "Liste des streamers :"
+  },
+  "login": {
+    "title": "Connexion",
+    "cancel": "Annuler",
+    "login": "Connexion"
+  },
+  "suggestions": {
+    "status": {
+      "SUBMITED": "Soumis",
+      "ACCEPTED": "Accepté"
+    },
+    "actions": {
+      "delete": "Supprimer"
+    },
+    "headers": {
+      "game":  "Jeux",
+      "author": "Auteur",
+      "status":  "Etat",
+      "actions": "Actions"
+    }
+  }
+}
