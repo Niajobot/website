@@ -1,9 +1,12 @@
 <template>
   <div>
     <b-table hover striped :items="suggestions" :fields="fields">
+      <template #cell(status)="data">
+        {{ $t(`suggestions.status.${data.item.status}`) }}
+      </template>
       <template #cell(actions)="data">
         <b-button v-if="userEmail != null && streamer === userTwitchName" v-on:click="deleteSuggestion(data.item)"
-                  variant="outline-danger">Suppression
+                  variant="outline-danger">{{ $t('suggestions.actions.delete') }}
         </b-button>
       </template>
     </b-table>
@@ -12,9 +15,10 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue, Watch} from 'vue-property-decorator';
+import {Component, Vue, Watch} from 'vue-property-decorator';
 import firebase from 'firebase';
 import {SuggestionModel} from "@/models/suggestions.model";
+import i18n from "@/i18n";
 
 @Component({})
 export default class SuggestionPage extends Vue {
@@ -24,10 +28,22 @@ export default class SuggestionPage extends Vue {
   public userTwitchName: string | null = null;
 
   public fields = [
-    'game',
-    'author',
-    'status',
-    'actions'
+    {
+      key: 'game',
+      label: i18n.t('suggestions.headers.game')
+    },
+    {
+      key: 'author',
+      label: i18n.t('suggestions.headers.author')
+    },
+    {
+      key: 'status',
+      label: i18n.t('suggestions.headers.status')
+    },
+    {
+      key: 'actions',
+      label: i18n.t('suggestions.headers.actions')
+    }
   ];
 
   private streamer: string;

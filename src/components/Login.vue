@@ -1,6 +1,6 @@
 <template>
   <b-modal id="modal-login" hide-footer>
-    <template #modal-title> Connexion </template>
+    <template #modal-title> {{ $t('login.title') }} </template>
     <div class=".align-middle">
       <div class="form">
         <b-row>
@@ -22,10 +22,10 @@
         class="mr-2"
         variant="outline-danger"
         @click="$bvModal.hide('modal-login')"
-        >Cancel</b-button
+        >{{ $t('login.cancel') }}</b-button
       >
       <b-button v-on:click="logToFirebase()" variant="secondary"
-        >Login</b-button
+        >{{ $t('login.login') }}</b-button
       >
     </div>
   </b-modal>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    Liste des streamers :
+    {{ $t('home.list_streamers') }}
     <ul>
       <li v-for="(streamer, index) in streamers" :key="index">
         <router-link :to="{ name: 'Suggestions', params: {streamer: streamer}}">{{ streamer }}</router-link>

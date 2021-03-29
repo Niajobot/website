@@ -1,20 +1,20 @@
 <template>
   <header>
     <b-navbar toggleable="lg" type="dark" variant="primary">
-<!--      <b-navbar-brand href="#" v-if="streamer">{{ streamer }}</b-navbar-brand>-->
-      <b-navbar-brand href="/">Home</b-navbar-brand>
+      <!--      <b-navbar-brand href="#" v-if="streamer">{{ streamer }}</b-navbar-brand>-->
+      <b-navbar-brand href="/">{{ $t('header.home') }}</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav> </b-navbar-nav>
+        <b-navbar-nav></b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <div v-if="userEmail == null" class="d-flex">
             <div>
               <b-button v-b-modal.modal-login variant="outline-secondary">
-                Log In
+                {{ $t('header.login') }}
               </b-button>
 
-              <Login />
+              <Login/>
             </div>
           </div>
         </b-navbar-nav>
@@ -32,8 +32,9 @@ import firebase from "firebase";
 
 //internal
 import Login from "@/components/Login.vue";
+
 @Component({
-  components: { Login },
+  components: {Login},
 })
 export default class Header extends Vue {
 
