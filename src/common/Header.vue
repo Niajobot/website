@@ -12,7 +12,7 @@
           <b-nav-item v-for="(streamer, index) in streamers" :key="index" :to="{ name: 'Suggestions', params: {streamer: streamer}}">{{ streamer }}</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
-          <div v-if="userEmail === null" class="d-flex">
+          <div v-if="userEmail == null" class="d-flex">
             <div>
               <b-button v-b-modal.modal-login variant="outline-secondary">
                 {{ $t('header.login') }}
