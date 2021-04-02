@@ -5,8 +5,12 @@
         {{ $t(`suggestions.status.${data.item.status}`) }}
       </template>
       <template #cell(actions)="data">
-        <b-button v-if="userEmail != null && streamer === userTwitchName" v-on:click="deleteSuggestion(data.item)"
+        <b-button v-if="isStreamerOfChannel()" v-on:click="deleteSuggestion(data.item)"
+                  class="mr-2"
                   variant="outline-danger">{{ $t('suggestions.actions.delete') }}
+        </b-button>
+        <b-button v-if="isStreamerOfChannel()" v-on:click="acceptSuggestion(data.item)"
+                  variant="outline-success">{{ $t('suggestions.actions.accept') }}
         </b-button>
       </template>
     </b-table>
@@ -17,8 +21,11 @@
 <script lang="ts">
 import {Component, Vue, Watch} from 'vue-property-decorator';
 import firebase from 'firebase';
-import {SuggestionModel} from "@/models/suggestions.model";
+import {SuggestionModel} from "@/models/suggestion.model";
 import i18n from "@/i18n";
+import {GameModel} from "@/models/game.model";
+import {SuggestionStatus} from "@/models/suggestion-status.enum";
+import {GameStatus} from "@/models/game-status.enum";
 
 @Component({})
 export default class SuggestionPage extends Vue {
@@ -76,6 +83,23 @@ export default class SuggestionPage extends Vue {
         .child(suggestion.id).remove()
   }
 
+  public acceptSuggestion(suggestion: SuggestionModel): void {
+    firebase.database().ref('/').child(this.streamer)
+        .child("suggestions")
+        .child(suggestion.id).update({status: 'ACCEPTED'})
+    firebase.database().ref('/').child(this.streamer)
+        .child("games")
+        .push(new GameModel({
+          game: suggestion.game,
+          original_suggesting_author: suggestion.author,
+          status: GameStatus.TODO
+        }))
+  }
+
+  public isStreamerOfChannel() {
+    return this.userEmail != null && this.streamer === this.userTwitchName;
+  }
+
   @Watch('$route.params.streamer')
   public changeStreamer() {
     this.firebaseConnexion.off();
@@ -87,6 +111,8 @@ export default class SuggestionPage extends Vue {
     this.firebaseConnexion = firebase.database().ref('/').child(this.streamer)
         .child("suggestions");
     this.firebaseConnexion
+        .orderByChild('status')
+        .equalTo(SuggestionStatus.SUBMITED)
         .on("value", snapshot => {
           if (snapshot.val() != null) {
             this.suggestions = Object.entries(snapshot.val())
