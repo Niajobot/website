@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
-    <Header streamer="nicroz38"></Header>
+  <div id="app" :class="currentTheme">
+    <Header></Header>
     <main>
-      <router-view/>
+      <router-view />
     </main>
   </div>
 </template>
@@ -13,8 +13,11 @@ import SuggestionPage from "./views/SuggestionPage.vue";
 import Header from "./common/Header.vue";
 import firebase from "firebase";
 import BootstrapVue, { IconsPlugin, LayoutPlugin } from "bootstrap-vue";
-import "./styles/theme.scss";
+import "./styles/site.scss";
 import HomePage from "@/views/Home.vue";
+
+import { Watch } from "vue-property-decorator";
+import { Route } from "vue-router";
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue);
@@ -26,10 +29,12 @@ Vue.use(LayoutPlugin);
   components: {
     SuggestionPage,
     Header,
-    HomePage
+    HomePage,
   },
 })
 export default class App extends Vue {
+
+  public currentTheme: string;
   async created() {
     const firebaseConfig = {
       apiKey: "AIzaSyChh1BEx0mB2747hP8jW9QA8ebwIgJmodQ",
@@ -44,6 +49,16 @@ export default class App extends Vue {
     firebase.initializeApp(firebaseConfig);
 
     await firebase.auth().signInAnonymously();
+
+    this.currentTheme = 'main';
+  }
+
+  @Watch("$route", { immediate: true, deep: true })
+  onUrlChange(to: Route, from: Route) {
+    if (to?.params?.streamer !== from?.params?.streamer) {
+      // ThemeHelper.theme = "flatly";
+      this.currentTheme = to?.params?.streamer ?? 'main'
+    }
   }
 }
 </script>
