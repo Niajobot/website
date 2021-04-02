@@ -7,4 +7,5 @@ export class SuggestionModel {
     public id: string;
     public game: string;
     public author: string;
+    public status: string;
 }

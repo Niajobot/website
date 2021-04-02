@@ -21,7 +21,8 @@
       "ACCEPTED": "Accepté"
     },
     "actions": {
-      "delete": "Supprimer"
+      "delete": "Supprimer",
+      "accept": "Accepter"
     },
     "headers": {
       "game":  "Jeux",
