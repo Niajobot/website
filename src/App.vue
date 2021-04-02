@@ -55,7 +55,6 @@ export default class App extends Vue {
 
   @Watch("$route", { immediate: true, deep: true })
   onUrlChange(to: Route, from: Route) {
-    console.log(to?.params?.streamer)
     if (to?.params?.streamer !== from?.params?.streamer) {
       // ThemeHelper.theme = "flatly";
       this.currentTheme = to?.params?.streamer ?? 'main'
