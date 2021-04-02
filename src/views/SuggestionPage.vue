@@ -103,7 +103,7 @@ export default class SuggestionPage extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import '../styles/theme.scss';
+@import '../styles/site.scss';
 
 #collapse-login {
   margin-top: 25px;

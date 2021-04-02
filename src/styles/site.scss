@@ -1,14 +1,30 @@
 // Define variable defaults
 // $body-bg: #000;
 // $body-color: #111;
-$theme-colors: (
-  "primary": #1E1513,
-  "danger": #ff4136,
-  "secondary": #B79765,
-);
 
-@import '~bootstrap/scss/bootstrap.scss';
-@import '~bootstrap-vue/src/index.scss';
+
+#app {
+
+  &.main {
+    // @import './themes/theme';
+
+    @import '~bootstrap/scss/bootstrap.scss';
+    @import '~bootstrap-vue/src/index.scss';
+  }
+  &.nicroz38 {
+    @import './themes/theme-nicroz';
+
+    @import '~bootstrap/scss/bootstrap.scss';
+    @import '~bootstrap-vue/src/index.scss';
+  }
+
+  &.biajo {
+    @import './themes/theme-biajo';
+
+    @import '~bootstrap/scss/bootstrap.scss';
+    @import '~bootstrap-vue/src/index.scss';
+  }
+}
 
 // Pour ajouter un shadow a un élément on peut ajouter @extend %shadow-x-dp dans la définition du CSS de l'élément concerné
 %shadow-1-dp {
