@@ -9,7 +9,6 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import SuggestionPage from "./views/SuggestionPage.vue";
 import Header from "./common/Header.vue";
 import firebase from "firebase";
 import BootstrapVue, { IconsPlugin, LayoutPlugin } from "bootstrap-vue";
@@ -18,6 +17,7 @@ import HomePage from "@/views/Home.vue";
 
 import { Watch } from "vue-property-decorator";
 import { Route } from "vue-router";
+import Streamer from "@/views/Streamer.vue";
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue);
@@ -27,9 +27,9 @@ Vue.use(LayoutPlugin);
 
 @Component({
   components: {
-    SuggestionPage,
     Header,
     HomePage,
+    Streamer
   },
 })
 export default class App extends Vue {

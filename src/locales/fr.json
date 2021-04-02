@@ -41,5 +41,13 @@
       "status":  "Etat",
       "actions": "Actions"
     }
+  },
+  "historique": {
+    "games_todo": "Jeux à faire",
+    "games_in_progress": "Jeux en cours",
+    "headers": {
+      "game":  "Jeux",
+      "original_suggesting_author": "Jeux proposés par"
+    }
   }
 }
