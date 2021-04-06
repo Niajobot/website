@@ -8,16 +8,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Header from "./common/Header.vue";
+import { Component, Vue, Watch } from "vue-property-decorator";
 import firebase from "firebase";
 import BootstrapVue, { IconsPlugin, LayoutPlugin } from "bootstrap-vue";
-import "./styles/site.scss";
-import HomePage from "@/views/Home.vue";
-
-import { Watch } from "vue-property-decorator";
 import { Route } from "vue-router";
+
+import Header from "./common/Header.vue";
+import HomePage from "@/views/Home.vue";
 import Streamer from "@/views/Streamer.vue";
+
+import "./styles/site.scss";
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue);

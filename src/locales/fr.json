@@ -24,7 +24,12 @@
   "login": {
     "title": "Connexion",
     "cancel": "Annuler",
-    "login": "Connexion"
+    "login": "Connexion",
+    "errror": {
+      "email_or_password_invalid": "L'email et/ou le mot de passe sont invalides",
+      "user_disabled": "Le compte lié à cet email a été désactivé",
+      "generic": "Un problème a été rencontré pendant la connexion, veuillez reessayer"
+    }
   },
   "suggestions": {
     "status": {
