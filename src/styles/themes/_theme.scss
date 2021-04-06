@@ -1,4 +1,52 @@
-$theme-colors: (
-    "primary": #1953c2,
-    "secondary": #ff9030,
+// Base grayscale colors definitions
+// $white: #fff !default;
+// $gray-100: #f8f9fa !default;
+// $gray-200: #e9ecef !default;
+// $gray-300: #dee2e6 !default;
+// $gray-400: #ced4da !default;
+// $gray-500: #adb5bd !default;
+// $gray-600: #6c757d !default;
+// $gray-700: #495057 !default;
+// $gray-800: #343a40 !default;
+// $gray-900: #212529 !default;
+// $black: #000 !default;
+
+// Base colors definitions
+$blue: #1C7ED6 !default;
+// $indigo: #6610f2 !default;
+$purple: #6741D9 !default;
+$pink: #D6336C !default;
+$red: #e03131 !default;
+$orange: #FD6F60 !default;
+$yellow: #fcc419 !default;
+$green: #2B8A3E !default;
+// $teal: #20c997 !default;
+$cyan: #0C8599 !default;
+$marron: #935100 !default;
+
+// Theme color default definitions
+$primary: $cyan !default;
+$secondary: $orange !default;
+$success: $green !default;
+$info: $blue !default;
+$warning: $yellow !default;
+$danger: $red !default;
+// $light: $gray-100 !default;
+// $dark: $gray-800 !default;
+
+// This table defines the theme colors (variant names)
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    'primary': $primary,
+    'secondary': $secondary,
+    'success': $success,
+    'info': $info,
+    'warning': $warning,
+    'danger': $danger,
+    'marron': $marron
+    // 'light': $light,
+    // 'dark': $dark
+  ),
+  $theme-colors
 );

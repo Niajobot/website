@@ -9,16 +9,20 @@
     "niajobot": {
       "welcome_title": "Bienvenue sur Niajobot",
       "description": "Niajobot est un bot sans prétention qui a pour but d'améliorer la communication entre streamers et viewers.",
-      "need_more_informations": ""
+      "need_more_informations": "En savoir plus"
     },
     "streamers": {
-      "list_streamers": "Liste des streamers",
-      "text": "Retrouvez les streamers qui utilisent Niajobot pour accéder à leur espace"
+      "list_streamers": "Ils utilisent Niajobot",
+      "text": "Retrouvez les streamers qui utilisent Niajobot pour accéder à leur espace",
+      "go_to_streamer": "Accéder à son espace"
     },
     "features": {
       "title": "Fonctionnalités",
       "suggestions_title": "Suggestions",
-      "suggestions_text": "Pendant le stream vous pouvez suggérer des jeux au streamer via la commande <b>!suggestion jeu</b>.<br/> Vous retrouverez sur le site l'état de votre suggestion."
+      "suggestions_text": "Suggéré des jeux au streamer à l’aide de la commande:<br/><b>!suggestion jeu</b><br/>pendant le stream.<br/>Il pourra ainsi voir ce à quoi vous voulez le voir jouer.",
+      "planification_title": "Planning",
+      "planification_text": "Retrouvez le planning de vos streamers pour ne plus manquer un live !",
+      "come": "À venir"
     }    
   },
   "login": {

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import SuggestionPage from "@/views/SuggestionPage.vue";
-import HomePage from "@/views/Home.vue";
+import HomePage from "@/views/home/Home.vue";
 import Streamer from "@/views/Streamer.vue";
 import HistoriquePage from "@/views/HistoriquePage.vue";
 
