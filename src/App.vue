@@ -12,9 +12,11 @@ import { Component, Vue, Watch } from "vue-property-decorator";
 import firebase from "firebase";
 import BootstrapVue, { IconsPlugin, LayoutPlugin } from "bootstrap-vue";
 import { Route } from "vue-router";
+import VueScrollTo from "vue-scrollto";
+
 
 import Header from "./common/Header.vue";
-import HomePage from "@/views/Home.vue";
+import HomePage from "@/views/home/Home.vue";
 import Streamer from "@/views/Streamer.vue";
 
 import "./styles/site.scss";
@@ -24,6 +26,7 @@ Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
 Vue.use(LayoutPlugin);
+Vue.use(VueScrollTo);
 
 @Component({
   components: {

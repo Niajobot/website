@@ -21,7 +21,8 @@
     "vue-cli": "^2.9.6",
     "vue-i18n": "^8.22.3",
     "vue-property-decorator": "^9.1.2",
-    "vue-router": "^3.2.0"
+    "vue-router": "^3.2.0",
+    "vue-scrollto": "^2.20.0"
   },
   "devDependencies": {
     "@intlify/vue-i18n-loader": "^1.0.0",
