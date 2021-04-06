@@ -80,19 +80,15 @@ export default class Login extends Vue {
       .catch((error) => {
         switch (error.code) {
           case "auth/invalid-email":
-            this.errorMessage = "EMAIL_INVALID";
-            break;
           case "auth/user-not-found":
-            this.errorMessage = "EMAIL_NOT_FOUND";
+          case "auth/wrong-password":
+            this.errorMessage = "email_or_password_invalid";
             break;
           case "auth/user-disabled":
-            this.errorMessage = "USER_DISABLED";
-            break;
-          case "auth/wrong-password":
-            this.errorMessage = "INVALID_PASSWORD";
+            this.errorMessage = "user_disabled";
             break;
           default:
-            this.errorMessage = "GENERIC";
+            this.errorMessage = "generic";
             break;
         }
         this.showAlert = true;

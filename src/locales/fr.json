@@ -26,11 +26,9 @@
     "cancel": "Annuler",
     "login": "Connexion",
     "errror": {
-      "INVALID_PASSWORD": "Le mot de passe est invalide",
-      "EMAIL_INVALID": "Format d'email invalide",
-      "EMAIL_NOT_FOUND": "Aucun compte n'existe avec cet email",
-      "USER_DISABLED": "Le compte lié à cet email a été désactivé",
-      "GENERIC": "Un problème a été rencontré pendant la connexion, veuillez reessayer"
+      "email_or_password_invalid": "L'email et/ou le mot de passe sont invalides",
+      "user_disabled": "Le compte lié à cet email a été désactivé",
+      "generic": "Un problème a été rencontré pendant la connexion, veuillez reessayer"
     }
   },
   "suggestions": {
