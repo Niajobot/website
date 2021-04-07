@@ -25,6 +25,15 @@
       "come": "À venir"
     }    
   },
+  "streamer": {
+    "welcome_message": "{streamer} vous souhaite la bienvenue",
+    "see_twitch": "Voir mon twitch",
+    "navbar": {
+      "home": "Accueil",
+      "suggestions": "Suggestions",
+      "history": "Historique"
+    }
+  },
   "login": {
     "title": "Connexion",
     "cancel": "Annuler",
@@ -49,7 +58,8 @@
       "author": "Auteur",
       "status":  "Etat",
       "actions": "Actions"
-    }
+    },
+    "explanation": "Retrouvez ici toutes les suggestions qui ont été faite et aui sont en cours de traitement par nicroz38. Les suggestions accepté apparaitrons dans la page historique. Donc n’ayez pas peur si votre suggestions n’est pas visible ici."
   },
   "historique": {
     "games_todo": "Jeux à faire",

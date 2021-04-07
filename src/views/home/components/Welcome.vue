@@ -1,9 +1,6 @@
 
 <template>
-  <b-jumbotron
-    header="BootstrapVue"
-    lead="Bootstrap v4 Components for Vue.js 2"
-  >
+  <b-jumbotron>
     <template #header>{{ $t("home.niajobot.welcome_title") }}</template>
 
     <template #lead>

@@ -2,7 +2,7 @@
   <div id="app" :class="currentTheme">
     <Header></Header>
     <main>
-      <router-view />
+      <router-view :key="$route.path"/>
     </main>
   </div>
 </template>
@@ -16,8 +16,6 @@ import VueScrollTo from "vue-scrollto";
 
 
 import Header from "./common/Header.vue";
-import HomePage from "@/views/home/Home.vue";
-import Streamer from "@/views/Streamer.vue";
 
 import "./styles/site.scss";
 
@@ -30,9 +28,7 @@ Vue.use(VueScrollTo);
 
 @Component({
   components: {
-    Header,
-    HomePage,
-    Streamer
+    Header
   },
 })
 export default class App extends Vue {

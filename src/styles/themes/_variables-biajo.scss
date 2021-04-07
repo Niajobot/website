@@ -1,7 +1,30 @@
+// Base colors definitions
+$blue-biajo: #3665D9 !default;
+$indigo-biajo: #3A2499 !default;
+$pink-biajo: #BC4CD9 !default;
+$red-biajo: #C20E01 !default;
+$orange-biajo: #D96E57 !default;
+$yellow-biajo: #D9CB41 !default;
+$green-biajo: #95D92B !default;
+$teal-biajo: #36D99E !default;
+$cyan-biajo: #40A9E6 !default;
+$dark-primary-biajo: #492E99 !default;
+
+// Theme color default definitions
+$primary-biajo: $purple !default;
+$secondary-biajo: $orange-biajo !default;
+$success-biajo: $green-biajo !default;
+$info-biajo: $teal-biajo!default;
+$warning-biajo: $yellow-biajo !default;
+$danger-biajo: $red-biajo !default;
+
+// This table defines the theme colors (variant names)
 $theme-colors: (
-  "primary": #5E3871,
-  "secondary": #F0C165,
-  "success": #35F093,
-  "danger": #ff4136,
-  "info": #41E4F0,
+  "primary": $primary-biajo,
+  "secondary": $secondary-biajo,
+  "success": $success-biajo,
+  "info": $info-biajo,
+  "warning": $warning-biajo,
+  "danger": $danger-biajo,
+  "dark-primary-biajo": $dark-primary-biajo
 );
