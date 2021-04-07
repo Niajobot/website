@@ -1,7 +1,31 @@
+// Base colors definitions
+$blue-nicroz38: #1634e0 !default;
+$indigo-nicroz38: #006494 !default;
+$purple-nicroz38: #430f94 !default;
+$pink-nicroz38: #D650E0 !default;
+$red-nicroz38: #950901 !default;
+$orange-nicroz38: #E07B00 !default;
+$yellow-nicroz38: #fad664 !default;
+$green-nicroz38: #0f942c !default;
+$teal-nicroz38: #14c7a0 !default;
+$cyan-nicroz38: #2899A1 !default;
+$dark-primary-nicroz38: #7A4300 !default;
+
+// Theme color default definitions
+$primary-nicroz38: $marron !default;
+$secondary-nicroz38: $cyan-nicroz38 !default;
+$success-nicroz38: $green-nicroz38 !default;
+$info-nicroz38: $blue-nicroz38 !default;
+$warning-nicroz38: $yellow-nicroz38 !default;
+$danger-nicroz38: $red-nicroz38 !default;
+
+// This table defines the theme colors (variant names)
 $theme-colors: (
-  "primary": #1E1513,
-  "secondary": #B79765,
-  "success": #65F099,
-  "danger": #ff4136,
-  "info": #41E4F0,
+  "primary": $primary-nicroz38,
+  "secondary": $secondary-nicroz38,
+  "success": $success-nicroz38,
+  "info": $info-nicroz38,
+  "warning": $warning-nicroz38,
+  "danger": $danger-nicroz38,
+  "dark-primary-nicroz38": $dark-primary-nicroz38
 );

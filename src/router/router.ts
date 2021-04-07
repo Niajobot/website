@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import SuggestionPage from "@/views/SuggestionPage.vue";
-import HomePage from "@/views/home/Home.vue";
-import Streamer from "@/views/Streamer.vue";
-import HistoriquePage from "@/views/HistoriquePage.vue";
+import SuggestionPage from "@/views/Streamer/Pages/SuggestionPage.vue";
+import HomePage from "@/views/Home/Home.vue";
+import Streamer from "@/views/Streamer/Streamer.vue";
+import HistoriquePage from "@/views/Streamer/Pages/HistoriquePage.vue";
+import HomeStreamerPage from "@/views/Streamer/Pages/HomeStreamerPage.vue";
 
 Vue.use(VueRouter)
 
@@ -17,15 +18,20 @@ const routes: Array<RouteConfig> = [
             name: 'Suggestions',
             component: SuggestionPage
         },
-            {
-                path: 'historique',
-                name: 'Historique',
-                component: HistoriquePage
-            },
-            {
-                path: '',
-                redirect: {name: 'Suggestions'}
-            }]
+        {
+            path: 'historique',
+            name: 'Historique',
+            component: HistoriquePage
+        },
+        {
+            path: 'home',
+            name: 'HomeStreamer',
+            component: HomeStreamerPage
+        },
+        {
+            path: '',
+            redirect: {name: 'HomeStreamer'}
+        }]
     },
     {
         path: '/',
