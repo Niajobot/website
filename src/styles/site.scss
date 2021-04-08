@@ -21,6 +21,10 @@
     @import "~bootstrap/scss/bootstrap.scss";
     @import "~bootstrap-vue/src/index.scss";
   }
+
+  .table {
+    @extend %shadow-3-dp;
+  }
 }
 
 // Pour ajouter un shadow a un élément on peut ajouter @extend %shadow-x-dp dans la définition du CSS de l'élément concerné
