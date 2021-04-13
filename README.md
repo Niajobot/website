@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Niajobot_niajobot-web-admin&metric=alert_status)](https://sonarcloud.io/dashboard?id=Niajobot_niajobot-web-admin)
+
 # twitch-bot-web-admin
 Web app for the twitch bot
 
