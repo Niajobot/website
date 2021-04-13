@@ -1,14 +1,13 @@
 <template>
   <div>
     <p>{{ $t(`suggestions.explanation`) }}</p>
-    <b-table
-      hover
-      striped
-      :items="suggestions"
-      :fields="fields"
-    >
+    <b-table hover striped :items="suggestions" :fields="fields">
       <template #cell(status)="data">
-        {{ $t(`suggestions.status.${data.item.status}`) }}
+        <h5>
+          <b-badge pill :variant="`${statusDisplayed[data.item.status]}`">{{
+            $t(`suggestions.status.${data.item.status}`)
+          }}</b-badge>
+        </h5>
       </template>
       <template #cell(actions)="data">
         <b-button
@@ -16,13 +15,13 @@
           v-on:click="deleteSuggestion(data.item)"
           class="mr-2"
           variant="outline-danger"
-          >{{ $t("suggestions.actions.delete") }}
+          ><b-icon-trash-fill />
         </b-button>
         <b-button
           v-if="isStreamerOfChannel()"
           v-on:click="acceptSuggestion(data.item)"
-          variant="outline-success"
-          >{{ $t("suggestions.actions.accept") }}
+          variant="success"
+          ><b-icon-check-circle-fill />
         </b-button>
       </template>
     </b-table>
@@ -43,6 +42,10 @@ export default class SuggestionPage extends Vue {
   public suggestions: Array<SuggestionModel> = [];
   public userEmail: string | null = null;
   public userTwitchName: string | null = null;
+  public statusDisplayed = {
+    SUBMITED: "info",
+    ACCEPTED: "success",
+  };
 
   public fields = [
     {
@@ -57,12 +60,12 @@ export default class SuggestionPage extends Vue {
       key: "status",
       label: i18n.t("suggestions.headers.status"),
     },
-    {
-      key: "actions",
-      label: i18n.t("suggestions.headers.actions"),
-    },
   ];
 
+  /**{
+      key: "actions",
+      label: i18n.t("suggestions.headers.actions"),
+    } */
   private streamer: string;
   private firebaseConnexion: firebase.database.Reference;
 
@@ -70,6 +73,7 @@ export default class SuggestionPage extends Vue {
     this.streamer = this.$route.params.streamer;
 
     firebase.auth().onAuthStateChanged(async (user) => {
+      console.log(user);
       if (user != null) {
         this.userEmail = user.email;
         const value = await firebase
@@ -80,6 +84,12 @@ export default class SuggestionPage extends Vue {
           .get();
         if (value.val() != null) {
           this.userTwitchName = value.val()[user.uid];
+        }
+        if (this.isStreamerOfChannel()) {
+          this.fields.push({
+            key: "actions",
+            label: i18n.t("suggestions.headers.actions"),
+          });
         }
       } else {
         this.userEmail = null;
@@ -158,9 +168,4 @@ export default class SuggestionPage extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import "../../../styles/site.scss";
-
-.table {
-  @extend %shadow-3-dp;
-}
 </style>

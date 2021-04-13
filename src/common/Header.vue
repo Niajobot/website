@@ -22,7 +22,7 @@
             </div>
           </div>
           <div v-else>
-            <b-dropdown variant="outline-secondary">
+            <b-dropdown variant="outline-light">
               <template #button-content>
                 {{ userEmail }}
               </template>
