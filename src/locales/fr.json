@@ -59,14 +59,17 @@
       "status":  "Etat",
       "actions": "Actions"
     },
-    "explanation": "Retrouvez ici toutes les suggestions qui ont été faite et aui sont en cours de traitement par nicroz38. Les suggestions accepté apparaitrons dans la page historique. Donc n’ayez pas peur si votre suggestions n’est pas visible ici."
+    "explanation": "Retrouvez ici toutes les suggestions qui ont été faite et aui sont en cours de traitement par nicroz38. Les suggestions accepté apparaitrons dans la page historique. Donc n’ayez pas peur si votre suggestions n’est pas visible ici.",
+    "accepted": "Suggestions acceptées, vous pouvez les archiver pour créer un jeu à faire prochainement"
   },
   "historique": {
     "games_todo": "Jeux à faire",
     "games_in_progress": "Jeux en cours",
+    "games_over": "Jeux finis",
     "headers": {
       "game":  "Jeux",
-      "original_suggesting_author": "Jeux proposés par"
+      "original_suggesting_author": "Jeux proposés par",
+      "actions": "Actions"
     }
   }
 }
