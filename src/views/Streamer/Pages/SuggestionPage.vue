@@ -13,6 +13,7 @@
         <b-button
           v-if="isStreamerOfChannel()"
           v-on:click="deleteSuggestion(data.item)"
+          v-b-tooltip.hover :title="$t('suggestions.tooltip.delete_suggestion')"
           class="mr-2"
           variant="outline-danger"
           ><b-icon-trash-fill />
@@ -20,6 +21,7 @@
         <b-button
           v-if="isStreamerOfChannel()"
           v-on:click="acceptSuggestion(data.item)"
+          v-b-tooltip.hover :title="$t('suggestions.tooltip.accept_suggestion')"
           variant="success"
           ><b-icon-check-circle-fill />
         </b-button>
@@ -38,12 +40,14 @@
         <template #cell(actions)="data">
           <b-button
               v-on:click="deleteSuggestion(data.item)"
+              v-b-tooltip.hover :title="$t('suggestions.tooltip.delete_suggestion')"
               class="mr-2"
               variant="outline-danger"
           ><b-icon-trash-fill />
           </b-button>
           <b-button
               v-on:click="archiveSuggestion(data.item)"
+              v-b-tooltip.hover :title="$t('suggestions.tooltip.archive_suggestion')"
               variant="success"
           ><b-icon-check-circle-fill />
           </b-button>

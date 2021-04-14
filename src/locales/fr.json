@@ -32,6 +32,12 @@
       "home": "Accueil",
       "suggestions": "Suggestions",
       "history": "Historique"
+    },
+    "nicroz38": {
+      "description": "Bonjour, ici Nicroz,humble streamer mangeur de gras devant l'éternel.<br/> Je compte streamer ce qui me fait plaisir, selon mon humeur, ça peut aller de jeux indé récents à du retro (GC for life <3 )"
+    },
+    "biajo": {
+      "description": "Joueuse depuis pas mal d'année maintenant (ne pas compter ça rajeuni pas).<br/> Ici des streams pour le plaisir sur des jeux auxquels je joue, sans prise de tête. Du plateformer puzzle, mais surement d'autre jeu que j'apprécie pour partager des moments tranquilles."
     }
   },
   "login": {
@@ -53,6 +59,11 @@
       "delete": "Supprimer",
       "accept": "Accepter"
     },
+    "tooltip": {
+      "accept_suggestion": "Accepter la suggestion",
+      "delete_suggestion": "Supprimer la suggestion",
+      "archive_suggestion": "Archiver la suggestion"
+    },
     "headers": {
       "game":  "Jeux",
       "author": "Auteur",
@@ -70,6 +81,10 @@
       "game":  "Jeux",
       "original_suggesting_author": "Jeux proposés par",
       "actions": "Actions"
+    },
+    "tooltip": {
+      "in_progress_game": "Mettre le jeu \"en cours\"",
+      "done_game": "Jeu terminé"
     }
   }
 }
