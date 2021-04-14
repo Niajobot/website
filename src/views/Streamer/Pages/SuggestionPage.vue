@@ -25,6 +25,31 @@
         </b-button>
       </template>
     </b-table>
+    <div v-if="isStreamerOfChannel()">
+      <p>{{ $t(`suggestions.accepted`) }}</p>
+      <b-table hover striped :items="acceptedSuggestions" :fields="fields" >
+        <template #cell(status)="data">
+          <h5>
+            <b-badge pill :variant="`${statusDisplayed[data.item.status]}`">{{
+                $t(`suggestions.status.${data.item.status}`)
+              }}</b-badge>
+          </h5>
+        </template>
+        <template #cell(actions)="data">
+          <b-button
+              v-on:click="deleteSuggestion(data.item)"
+              class="mr-2"
+              variant="outline-danger"
+          ><b-icon-trash-fill />
+          </b-button>
+          <b-button
+              v-on:click="archiveSuggestion(data.item)"
+              variant="success"
+          ><b-icon-check-circle-fill />
+          </b-button>
+        </template>
+      </b-table>
+    </div>
   </div>
 </template>
 
@@ -36,12 +61,14 @@ import i18n from "@/i18n";
 import { GameModel } from "@/models/game.model";
 import { SuggestionStatus } from "@/models/suggestion-status.enum";
 import { GameStatus } from "@/models/game-status.enum";
+import { UserHelper } from "@/user.helper";
+import { UserModel } from "@/models/user.model";
 
 @Component({})
 export default class SuggestionPage extends Vue {
   public suggestions: Array<SuggestionModel> = [];
-  public userEmail: string | null = null;
-  public userTwitchName: string | null = null;
+  public acceptedSuggestions: Array<SuggestionModel> = [];
+  public user: UserModel;
   public statusDisplayed = {
     SUBMITED: "info",
     ACCEPTED: "success",
@@ -73,26 +100,15 @@ export default class SuggestionPage extends Vue {
     this.streamer = this.$route.params.streamer;
 
     firebase.auth().onAuthStateChanged(async (user) => {
-      console.log(user);
-      if (user != null) {
-        this.userEmail = user.email;
-        const value = await firebase
-          .database()
-          .ref("/users")
-          .orderByKey()
-          .equalTo(user.uid)
-          .get();
-        if (value.val() != null) {
-          this.userTwitchName = value.val()[user.uid];
-        }
-        if (this.isStreamerOfChannel()) {
-          this.fields.push({
-            key: "actions",
-            label: i18n.t("suggestions.headers.actions"),
-          });
-        }
-      } else {
-        this.userEmail = null;
+      this.user = new UserModel({
+        email: user?.email,
+        twitchName: await UserHelper.getUserTwitchName(user?.uid)
+      })
+      if (this.isStreamerOfChannel()) {
+        this.fields.push({
+          key: "actions",
+          label: i18n.t("suggestions.headers.actions"),
+        });
       }
     });
 
@@ -117,6 +133,16 @@ export default class SuggestionPage extends Vue {
       .child("suggestions")
       .child(suggestion.id)
       .update({ status: "ACCEPTED" });
+  }
+
+  public archiveSuggestion(suggestion: SuggestionModel): void {
+    firebase
+        .database()
+        .ref("/")
+        .child(this.streamer)
+        .child("suggestions")
+        .child(suggestion.id)
+        .update({ status: "ARCHIVED" });
     firebase
       .database()
       .ref("/")
@@ -131,8 +157,8 @@ export default class SuggestionPage extends Vue {
       );
   }
 
-  public isStreamerOfChannel() {
-    return this.userEmail != null && this.streamer === this.userTwitchName;
+  public isStreamerOfChannel(): boolean {
+    return UserHelper.isStreamerOfChannel(this.user, this.streamer);
   }
 
   @Watch("$route.params.streamer")
@@ -140,6 +166,18 @@ export default class SuggestionPage extends Vue {
     this.firebaseConnexion.off();
     this.streamer = this.$route.params.streamer;
     this.loadSuggestions();
+  }
+
+  private extractSuggestionValues(snapshot: any): SuggestionModel[] {
+    if (snapshot.val() != null) {
+      return Object.entries(snapshot.val()).map((entrie) => {
+        return new SuggestionModel(
+            Object.assign({}, { id: entrie[0] }, entrie[1])
+        );
+      });
+    } else {
+      return [];
+    }
   }
 
   private loadSuggestions() {
@@ -152,16 +190,15 @@ export default class SuggestionPage extends Vue {
       .orderByChild("status")
       .equalTo(SuggestionStatus.SUBMITED)
       .on("value", (snapshot) => {
-        if (snapshot.val() != null) {
-          this.suggestions = Object.entries(snapshot.val()).map((entrie) => {
-            return new SuggestionModel(
-              Object.assign({}, { id: entrie[0] }, entrie[1])
-            );
-          });
-        } else {
-          this.suggestions = [];
-        }
+        this.suggestions = this.extractSuggestionValues(snapshot);
       });
+
+    this.firebaseConnexion
+        .orderByChild("status")
+        .equalTo(SuggestionStatus.ACCEPTED)
+        .on("value", (snapshot) => {
+          this.acceptedSuggestions = this.extractSuggestionValues(snapshot);
+        });
   }
 }
 </script>
