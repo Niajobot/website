@@ -48,8 +48,6 @@ export default class App extends Vue {
     firebase.initializeApp(firebaseConfig);
 
     await firebase.auth().signInAnonymously();
-
-    this.currentTheme = 'main';
   }
 
   @Watch("$route", { immediate: true, deep: true })

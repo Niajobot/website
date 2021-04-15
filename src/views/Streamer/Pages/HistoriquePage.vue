@@ -4,6 +4,7 @@
     <b-table hover striped :items="gamesInProgress" :fields="fields">
       <template #cell(actions)="data">
         <b-button
+            v-b-tooltip.hover :title="$t('historique.tooltip.done_game')"
             v-on:click="updateGameStatus(data.item, gameStatus.FINISHED)"
             variant="success"
         ><b-icon-check-circle-fill />
@@ -14,6 +15,7 @@
     <b-table hover striped :items="gamesToDo" :fields="fields">
       <template #cell(actions)="data">
         <b-button
+            v-b-tooltip.hover :title="$t('historique.tooltip.in_progress_game')"
             v-on:click="updateGameStatus(data.item, gameStatus.IN_PROGRESS)"
             variant="success"
         ><b-icon-check-circle-fill />
