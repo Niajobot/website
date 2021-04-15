@@ -7,7 +7,7 @@
             v-b-tooltip.hover :title="$t('historique.tooltip.done_game')"
             v-on:click="updateGameStatus(data.item, gameStatus.FINISHED)"
             variant="success"
-        ><b-icon-check-circle-fill />
+        ><b-icon-flag-fill />
         </b-button>
       </template>
     </b-table>
@@ -17,8 +17,8 @@
         <b-button
             v-b-tooltip.hover :title="$t('historique.tooltip.in_progress_game')"
             v-on:click="updateGameStatus(data.item, gameStatus.IN_PROGRESS)"
-            variant="success"
-        ><b-icon-check-circle-fill />
+            variant="info"
+        ><b-icon-card-checklist />
         </b-button>
       </template>
     </b-table>

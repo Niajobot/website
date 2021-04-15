@@ -48,8 +48,8 @@
           <b-button
               v-on:click="archiveSuggestion(data.item)"
               v-b-tooltip.hover :title="$t('suggestions.tooltip.archive_suggestion')"
-              variant="success"
-          ><b-icon-check-circle-fill />
+              variant="info"
+          ><b-icon-archive-fill />
           </b-button>
         </template>
       </b-table>
