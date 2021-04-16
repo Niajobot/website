@@ -12,7 +12,7 @@
       <template #cell(actions)="data">
         <b-button
           v-if="isStreamerOfChannel()"
-          v-on:click="deleteSuggestion(data.item)"
+          v-on:click="askReasonRejectSuggestion(data.item)"
           v-b-tooltip.hover :title="$t('suggestions.tooltip.delete_suggestion')"
           class="mr-2"
           variant="outline-danger"
@@ -39,7 +39,7 @@
         </template>
         <template #cell(actions)="data">
           <b-button
-              v-on:click="deleteSuggestion(data.item)"
+              v-b-modal.modal-reject-suggestion
               v-b-tooltip.hover :title="$t('suggestions.tooltip.delete_suggestion')"
               class="mr-2"
               variant="outline-danger"
@@ -54,6 +54,7 @@
         </template>
       </b-table>
     </div>
+    <RejectSuggestion :suggestion="suggestionToReject" @confirmReject="rejectSuggestion($event)" @cancelReject="cancelReject()"/>
   </div>
 </template>
 
@@ -67,8 +68,11 @@ import { SuggestionStatus } from "@/models/suggestion-status.enum";
 import { GameStatus } from "@/models/game-status.enum";
 import { UserHelper } from "@/user.helper";
 import { UserModel } from "@/models/user.model";
+import RejectSuggestion from "@/views/Streamer/components/RejectSuggestion.vue";
 
-@Component({})
+@Component({
+  components: {RejectSuggestion}
+})
 export default class SuggestionPage extends Vue {
   public suggestions: Array<SuggestionModel> = [];
   public acceptedSuggestions: Array<SuggestionModel> = [];
@@ -77,6 +81,7 @@ export default class SuggestionPage extends Vue {
     SUBMITED: "info",
     ACCEPTED: "success",
   };
+  public suggestionToReject: SuggestionModel | null;
 
   public fields = [
     {
@@ -119,14 +124,27 @@ export default class SuggestionPage extends Vue {
     this.loadSuggestions();
   }
 
-  public deleteSuggestion(suggestion: SuggestionModel): void {
-    firebase
-      .database()
-      .ref("/")
-      .child(this.streamer)
-      .child("suggestions")
-      .child(suggestion.id)
-      .remove();
+  public askReasonRejectSuggestion(suggestion: SuggestionModel): void {
+    this.suggestionToReject = suggestion;
+    this.$bvModal.show('modal-reject-suggestion');
+  }
+
+  public rejectSuggestion(reason: string) {
+    if (this.suggestionToReject != null) {
+      firebase
+          .database()
+          .ref("/")
+          .child(this.streamer)
+          .child("suggestions")
+          .child(this.suggestionToReject.id)
+          .update({ reason: reason, status: "REJECTED" });
+    }
+
+    this.suggestionToReject = null;
+  }
+
+  public cancelReject() {
+    this.suggestionToReject = null;
   }
 
   public acceptSuggestion(suggestion: SuggestionModel): void {
