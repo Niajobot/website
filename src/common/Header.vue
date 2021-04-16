@@ -27,11 +27,13 @@
                 {{ userEmail }}
               </template>
               <b-dropdown-item @click="logoutToFirebase">{{ $t('header.logout') }}</b-dropdown-item>
+              <b-dropdown-item v-b-modal.modal-modification-password>{{ $t('header.modification_password') }}</b-dropdown-item>
             </b-dropdown>
           </div>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
+    <ModificationPassword/>
   </header>
 </template>
 
@@ -44,9 +46,10 @@ import firebase from "firebase";
 
 //internal
 import Login from "@/components/Login.vue";
+import ModificationPassword from "@/components/ModificationPassword.vue";
 
 @Component({
-  components: {Login},
+  components: {ModificationPassword, Login},
 })
 export default class Header extends Vue {
   public userEmail: string | null = null;

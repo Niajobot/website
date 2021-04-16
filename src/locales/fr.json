@@ -2,6 +2,7 @@
   "header": {
     "login": "Se connecter",
     "logout": "Se déconnecter",
+    "modification_password": "Modification du mot de passe",
     "home": "Accueil",
     "brand": "Niajobot"
   },
@@ -49,6 +50,9 @@
       "user_disabled": "Le compte lié à cet email a été désactivé",
       "generic": "Un problème a été rencontré pendant la connexion, veuillez reessayer"
     }
+  },
+  "modification_password": {
+    "title": "Modification du mot de passe"
   },
   "suggestions": {
     "status": {
