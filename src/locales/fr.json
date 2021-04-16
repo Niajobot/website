@@ -70,6 +70,13 @@
       "status":  "Etat",
       "actions": "Actions"
     },
+    "reject": {
+      "title": "Reject d'une suggestion",
+      "explanation": "Pour quelle raison souhaitez vous rejeter cette proposition?",
+      "cancel": "Annuler",
+      "confirm": "Confirmer",
+      "reason_placeholder": "Raison"
+    },
     "explanation": "Retrouvez ici toutes les suggestions qui ont été faite et aui sont en cours de traitement par nicroz38. Les suggestions accepté apparaitrons dans la page historique. Donc n’ayez pas peur si votre suggestions n’est pas visible ici.",
     "accepted": "Suggestions acceptées, vous pouvez les archiver pour créer un jeu à faire prochainement"
   },
