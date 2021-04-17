@@ -12,6 +12,7 @@
           <b-nav-item v-for="(streamer, index) in streamers" :key="index" :to="{ name: 'HomeStreamer', params: {streamer: streamer}}">{{ streamer }}</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
+          <b-nav-item disabled>Beta</b-nav-item>
           <div v-if="userEmail == null" class="d-flex">
             <div>
               <b-button v-b-modal.modal-login variant="outline-light">
@@ -22,16 +23,18 @@
             </div>
           </div>
           <div v-else>
-            <b-dropdown variant="outline-light">
+            <b-dropdown variant="outline-light" right>
               <template #button-content>
                 {{ userEmail }}
               </template>
+              <b-dropdown-item v-b-modal.modal-modification-password>{{ $t('header.modification_password') }}</b-dropdown-item>
               <b-dropdown-item @click="logoutToFirebase">{{ $t('header.logout') }}</b-dropdown-item>
             </b-dropdown>
           </div>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
+    <ModificationPassword/>
   </header>
 </template>
 
@@ -44,9 +47,10 @@ import firebase from "firebase";
 
 //internal
 import Login from "@/components/Login.vue";
+import ModificationPassword from "@/components/ModificationPassword.vue";
 
 @Component({
-  components: {Login},
+  components: {ModificationPassword, Login},
 })
 export default class Header extends Vue {
   public userEmail: string | null = null;
