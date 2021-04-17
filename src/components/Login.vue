@@ -3,7 +3,7 @@
     <template #modal-title> {{ $t("login.title") }} </template>
     <b-alert :show="showAlert" variant="danger">
       <div v-if="errorMessage">
-        {{ $t(`login.errror.${errorMessage}`) }}
+        {{ $t(`login.error.${errorMessage}`) }}
       </div>
     </b-alert>
     <b-form @submit="logToFirebase" @reset="onReset">
@@ -11,36 +11,40 @@
         <div class="form">
           <b-row>
             <b-col sm="12" class="mb-2"
-              ><b-form-input
-                v-model="email"
-                type="email"
-                placeholder="email"
-                name="email"
-              />
+              >
+              <b-form-group :label="$t('login.email')">
+                <b-form-input
+                  v-model="email"
+                  type="email"
+                  :placeholder="$t('login.email')"
+                  name="email"
+                />
+              </b-form-group>
             </b-col>
             <b-col sm="12">
-              <b-input-group>
-                <b-form-input
-                  v-if="!showPassword"
-                  v-model="password"
-                  type="password"
-                  placeholder="password"
-                />
-                <b-form-input
-                  v-else
-                  v-model="password"
-                  type="text"
-                  placeholder="password"
-                />
-                <b-input-group-append>
-                  <b-button
-                    variant="outline-info"
-                    @click="switchShowPassword"
-                    ><b-icon-eye-fill v-if="!showPassword"></b-icon-eye-fill
-                    ><b-icon-eye-slash-fill v-else></b-icon-eye-slash-fill
-                  ></b-button>
-                </b-input-group-append>
-              </b-input-group>
+              <b-form-group :label="$t('login.password')">
+                <b-input-group>
+                  <b-form-input
+                    v-if="!showPassword"
+                    v-model="password"
+                    type="password"
+                    :placeholder="$t('login.password')"
+                  />
+                  <b-form-input
+                    v-else
+                    v-model="password"
+                    type="text"
+                  />
+                  <b-input-group-append>
+                    <b-button
+                      variant="outline-info"
+                      @click="switchShowPassword"
+                      ><b-icon-eye-fill v-if="!showPassword"></b-icon-eye-fill
+                      ><b-icon-eye-slash-fill v-else></b-icon-eye-slash-fill
+                    ></b-button>
+                  </b-input-group-append>
+                </b-input-group>
+              </b-form-group>
             </b-col>
           </b-row>
         </div>
