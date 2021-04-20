@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-jumbotron :bg-variant="`dark-primary-${streamer}`">
+    <b-jumbotron :bg-variant="`dark-primary-${theme}`">
       <template #header>{{
         $t("streamer.welcome_message", { streamer: streamer })
       }}</template>
@@ -30,6 +30,8 @@ import { GameStatus } from "@/models/game-status.enum";
 @Component({})
 export default class HomeStreamerPage extends Vue {
   public streamer: string;
+  public theme: string;
+  private streamerList = ["biajo", "nicroz38"];
 
   public gamesInProgress: Array<GameModel> = [];
 
@@ -75,6 +77,12 @@ export default class HomeStreamerPage extends Vue {
   onUrlChange(to: Route, from: Route) {
     if (to?.params?.streamer !== from?.params?.streamer) {
       this.streamer = to.params.streamer;
+
+      if(this.streamerList.includes(this.streamer)) {
+        this.theme = this.streamer;
+      } else {
+        this.theme = "default";
+      }
     }
   }
 }
@@ -82,7 +90,7 @@ export default class HomeStreamerPage extends Vue {
 
 <style scoped lang="scss">
 .jumbotron {
-  margin: -15px -30px;
+  margin: -15px -30px 2em -30px;
   border-radius: 0 !important;
   color: var(--light);
 }

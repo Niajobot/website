@@ -3,7 +3,7 @@
     <b-navbar
       toggleable="lg"
       type="dark"
-      :variant="`dark-primary-${streamer}`"
+      :variant="`dark-primary-${theme}`"
     >
       <b-navbar-nav>
         <b-nav-item :to="{ name: 'HomeStreamer', params: {streamer: streamer}}">{{$t("streamer.navbar.home")}}</b-nav-item>
@@ -25,11 +25,18 @@ import { Component, Watch } from "vue-property-decorator";
 @Component({})
 export default class Streamer extends Vue {
   public streamer: string;
+  public theme: string;
+  private streamerList = ["biajo", "nicroz38"];
 
   @Watch("$route", { immediate: true, deep: true })
   onUrlChange(to: Route, from: Route) {
     if (to?.params?.streamer !== from?.params?.streamer) {
       this.streamer = to.params.streamer;
+      if(this.streamerList.includes(this.streamer)) {
+        this.theme = this.streamer;
+      } else {
+        this.theme = "default";
+      }
     }
   }
 }

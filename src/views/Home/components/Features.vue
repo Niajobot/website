@@ -46,7 +46,7 @@ export default class Features extends Vue {}
   .card-body {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     padding-left: 0;
     padding-right: 0;
 
@@ -56,6 +56,7 @@ export default class Features extends Vue {}
     .card-img-top {
       max-width: 50%;
       height: 150px;
+      align-self: center;
     }
   }
 }

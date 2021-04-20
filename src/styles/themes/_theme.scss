@@ -34,6 +34,8 @@ $danger: $red !default;
 // $light: $gray-100 !default;
 // $dark: $gray-800 !default;
 
+$dark-primary-default:#2F6F7A;
+
 // This table defines the theme colors (variant names)
 $theme-colors: () !default;
 $theme-colors: map-merge(
@@ -44,9 +46,10 @@ $theme-colors: map-merge(
     'info': $info,
     'warning': $warning,
     'danger': $danger,
-    'marron': $marron
+    'marron': $marron,
     // 'light': $light,
     // 'dark': $dark
+    'dark-primary-default': $dark-primary-default
   ),
   $theme-colors
 );
