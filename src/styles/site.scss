@@ -23,6 +23,13 @@
     @import "~bootstrap-vue/src/index.scss";
   }
 
+  &.vega_nosaure {
+    @import "./themes/theme-vega_nosaure";
+
+    @import "~bootstrap/scss/bootstrap.scss";
+    @import "~bootstrap-vue/src/index.scss";
+  }
+
   .table {
     @extend %shadow-3-dp;
   }

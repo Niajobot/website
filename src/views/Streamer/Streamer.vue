@@ -26,7 +26,7 @@ import { Component, Watch } from "vue-property-decorator";
 export default class Streamer extends Vue {
   public streamer: string;
   public theme: string;
-  private streamerList = ["biajo", "nicroz38"];
+  private streamerList = ["biajo", "nicroz38", "vega_nosaure"];
 
   @Watch("$route", { immediate: true, deep: true })
   onUrlChange(to: Route, from: Route) {

@@ -1,0 +1,31 @@
+// Base colors definitions
+$blue-vega_nosaure: #228BE6 !default;
+$indigo-vega_nosaure: #748FFC !default;
+$purple-vega_nosaure: #6741D9 !default;
+$pink-vega_nosaure: #F169FF !default;
+$red-vega_nosaure: #B3253E !default;
+$orange-vega_nosaure: #FF6636 !default;
+$yellow-vega_nosaure: #FFE066 !default;
+$green-vega_nosaure: #37B24D !default;
+$teal-vega_nosaure: #30E5B8 !default;
+$cyan-vega_nosaure: #1098AD !default;
+$dark-primary-vega_nosaure: #20752F !default;
+
+// Theme color default definitions
+$primary-vega_nosaure: $green-vega_nosaure !default;
+$secondary-vega_nosaure: $purple-vega_nosaure !default;
+$success-vega_nosaure: $green-vega_nosaure !default;
+$info-vega_nosaure: $teal-vega_nosaure!default;
+$warning-vega_nosaure: $yellow-vega_nosaure !default;
+$danger-vega_nosaure: $red-vega_nosaure !default;
+
+// This table defines the theme colors (variant names)
+$theme-colors: (
+  "primary": $primary-vega_nosaure,
+  "secondary": $secondary-vega_nosaure,
+  "success": $success-vega_nosaure,
+  "info": $info-vega_nosaure,
+  "warning": $warning-vega_nosaure,
+  "danger": $danger-vega_nosaure,
+  "dark-primary-vega_nosaure": $dark-primary-vega_nosaure
+);
