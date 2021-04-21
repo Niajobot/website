@@ -31,7 +31,7 @@ import { GameStatus } from "@/models/game-status.enum";
 export default class HomeStreamerPage extends Vue {
   public streamer: string;
   public theme: string;
-  private streamerList = ["biajo", "nicroz38"];
+  private streamerList = ["biajo", "nicroz38", "vega_nosaure"];
 
   public gamesInProgress: Array<GameModel> = [];
 

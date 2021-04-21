@@ -50,6 +50,12 @@ export default class StreamersList extends Vue {
       background: url("../../../assets/nicroz38.jpg");
     }
   }
+  &.vega_nosaure {
+    background-color: var(--green);
+    .image {
+      background: url("../../../assets/vega_nosaure.png");
+    }
+  }
   .card-body {
     display: flex;
     flex-direction: column;
