@@ -1,3 +1,5 @@
+[![Discord](https://img.shields.io/discord/591914197219016707.svg?color=7289da&label=Discord&logo=discord&style=flat-square)](https://discord.gg/hzUQ7hqB)
+
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Niajobot_niajobot-web-admin&metric=alert_status)](https://sonarcloud.io/dashboard?id=Niajobot_niajobot-web-admin)
 
 # twitch-bot-web-admin
@@ -34,3 +36,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Discord
+If you want to suggest new idea, report bug or contribute to the project don't hesitate to join our discro : https://discord.gg/hzUQ7hqB
